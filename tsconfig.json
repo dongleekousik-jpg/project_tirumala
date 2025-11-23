@@ -24,14 +24,26 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
+
+  /*
+    Change summary:
+    - Only include source files under src/ so config files at repo root (vite.config.ts/.d.ts) are not pulled into the program.
+    - Exclude any vite config patterns and all top-level generated .d.ts artifacts.
+  */
   "include": [
-    "**/*.ts", 
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "vite-env.d.ts"
   ],
   "exclude": [
-    "node_modules", 
-    "dist"
+    "node_modules",
+    "dist",
+    "build",
+    ".vercel",
+    "vite.config.ts",
+    "vite.config.d.ts",
+    "vite.config.*.ts",
+    "**/*.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
